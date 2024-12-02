@@ -1,0 +1,1 @@
+{"root":["./src/room.ts","./src/testroom.ts","./src/testroommanger.ts","./src/index.ts","./src/seed.ts","./src/routes/user.ts","./src/routes/admin.ts","./src/types/schema.ts","./src/types/types.ts"],"version":"5.7.2"}

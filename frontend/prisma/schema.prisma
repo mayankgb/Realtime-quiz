@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+  quiz     Quiz[]
+}
+
+model Quiz {
+  id        String     @id @default(cuid())
+  name      String
+  imageUrl  String
+  category  Category   @default(NORMAL)
+  status    Status
+  prizePool Int
+  signature String
+  userId    String
+  user      User       @relation(fields: [userId], references: [id])
+  questions Question[]
+  winners   Winners[]
+}
+
+model Question {
+  id           String   @id @default(cuid())
+  text         String
+  imageUrl     String?
+  quizId       String
+  quiz         Quiz     @relation(fields: [quizId], references: [id])
+  correctIndex Int
+  options      Option[]
+}
+
+model Option {
+  id         String   @id @default(cuid())
+  index      Int
+  imageUrl   String?
+  text       String
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id])
+
+  @@unique([index, questionId])
+}
+
+model Winners {
+  id        String  @id @default(cuid())
+  position  Int
+  name      String
+  quizId    String
+  quiz      Quiz    @relation(fields: [quizId], references: [id])
+  signature String?
+
+  @@unique([position, quizId])
+}
+
+enum Status {
+  CREATED
+  STARTED
+  COMPLETED
+}
+
+enum Category {
+  TEST
+  NORMAL
+}
