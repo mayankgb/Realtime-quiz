@@ -10,6 +10,7 @@ import { NormalForm } from './NormalForm'
 import { AnimatePresence, motion } from "framer-motion"
 import axios from 'axios'
 import { BACKEND_URL } from '../types/type'
+import toast from 'react-hot-toast'
 
 export default function QuizEntry() {
   const [quizKey, setQuizKey] = useState({
@@ -26,7 +27,6 @@ export default function QuizEntry() {
         return
       }
       setIsLoading(true)
-      // Simulating API call
       const response = await axios.post(`https://${BACKEND_URL}/user/getquiz`,{
         key: parseInt(quizKey.key)
       })
@@ -41,6 +41,12 @@ export default function QuizEntry() {
         setIsSolana(1)
         setIsLoading(false)
     }catch(e) {
+      toast.error("no quiz found with this key", {
+        style : {
+          background: "#333",
+          color: "#fff"
+        }
+      })
       setIsLoading(false)
     }
   }
