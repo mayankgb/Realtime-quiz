@@ -12,7 +12,7 @@ import { useEffect } from "react"
 import toast from "react-hot-toast"
 import { useRecoilState, useSetRecoilState } from "recoil"
 
-export default function adminQuiz({ params }: { params: { quizId: string } }) {
+export default function AdminQuiz({ params }: { params: { quizId: string } }) {
 
     const router = useRouter()
     const quizId = params.quizId
@@ -20,8 +20,9 @@ export default function adminQuiz({ params }: { params: { quizId: string } }) {
     const setTotalPlayers = useSetRecoilState(totalPlayers)
     const setLeaderBoard = useSetRecoilState(leaderBoard)
     const setQuestion = useSetRecoilState(currentQuestion)
-    const [adminWs, setAdminWs] = useRecoilState(ws)
+    const setAdminWs = useSetRecoilState(ws)
     const setRoomKey = useSetRecoilState(roomKey)
+
     useEffect(() => {
 
         try {

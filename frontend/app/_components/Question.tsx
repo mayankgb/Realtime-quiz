@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
+import {useRecoilValue, useSetRecoilState } from "recoil"
 import { currentQuestion, currentState, ws } from "../store/state"
 // import { sampleQuestion } from "../sample"
 import { Button } from "@/components/ui/button"
@@ -8,12 +8,12 @@ import { CheckCircle2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 export function Question({ isAdmin }: { isAdmin: boolean }) {
-  const [newQuestion, setNewQuestion] = useRecoilState(currentQuestion)
+  const newQuestion = useRecoilValue(currentQuestion)
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
-  const [points, setPoints] = useState(newQuestion?.points!)
+  const [points, setPoints] = useState(newQuestion?.points || 0)
   const setState = useSetRecoilState(currentState)
   const [newIndex, setNewIndex] = useState<number>()
-  const [timeRemaining, setTimeRemaining] = useState((new Date().getTime() + (10 * 1000) - newQuestion?.startTime!) / 1000)
+  const [timeRemaining, setTimeRemaining] = useState((new Date().getTime() + (10 * 1000) - (newQuestion?.startTime || 0) ) / 1000)
   const userWs = useRecoilValue(ws)
   const router = useRouter()
 

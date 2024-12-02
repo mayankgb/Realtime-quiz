@@ -4,14 +4,7 @@ import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { roomKey, totalPlayers, ws } from '../store/state'
 import { motion } from 'framer-motion'
-import { Users, PlayCircle, Clock, Divide } from 'lucide-react'
-
-interface Player {
-  id: string
-  name: string
-  avatar: string
-  rank: number
-}
+import { Users, PlayCircle, Clock } from 'lucide-react'
 
 export function Waiting({ isAdmin } : { isAdmin: boolean }) {
   const playerCount = useRecoilValue(totalPlayers)

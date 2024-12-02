@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Trophy, Check, Stars } from 'lucide-react';
+import { Trophy, Check } from 'lucide-react';
 import { useRecoilValue } from 'recoil';
 import { totalPlayers } from '../store/state';
 

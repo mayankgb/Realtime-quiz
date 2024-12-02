@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input";
-import { Label } from "@radix-ui/react-label";
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import { motion } from "motion/react";
 import { AtSign, Loader2 } from "lucide-react";

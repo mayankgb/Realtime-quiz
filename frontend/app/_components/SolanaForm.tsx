@@ -93,6 +93,7 @@ export function SolanaForm() {
                             className="bg-white/20 border-2 border-teal-300/50 rounded-xl text-white placeholder-teal-200/70 pl-10" 
                             onChange={handleChange} 
                             placeholder="@YourUsername" 
+                            value={userInput.username}
                             type="text" 
                             id="username" 
                             name="username" 

@@ -16,7 +16,7 @@ export default function Submitted({
           <div className="text-gray-200 text-2xl font-semibold flex flex-col items-center space-y-4">
             <span className="text-6xl">😔</span>
             <span>Oh, you missed this!</span>
-            <span className="text-base text-gray-400">Time's up ⏰</span>
+            <span className="text-base text-gray-400">Time&apos;s up ⏰</span>
           </div>
         ) : (
           <div className="text-gray-200 text-2xl font-semibold flex flex-col items-center space-y-4">
