@@ -10,3 +10,5 @@ export interface Question {
         index:number
     }[]
 }
+
+export const BACKEND_URL = "quizmaster-a94j.onrender.com"

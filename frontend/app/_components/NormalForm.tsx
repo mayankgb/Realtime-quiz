@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { BACKEND_URL } from "../types/type";
 
 export function NormalForm({userInput, setUserInput}: {userInput: {
     key: string;
@@ -35,7 +36,7 @@ export function NormalForm({userInput, setUserInput}: {userInput: {
             return
         }
         try{
-            const response = await axios.post("http://localhost:8000/user/join", {
+            const response = await axios.post(`https://${BACKEND_URL}/user/join`, {
                 quizKey: parseInt(userInput.key),
                 username: userInput.username,
                 quizId: userInput.quizId

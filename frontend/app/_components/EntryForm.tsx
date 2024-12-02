@@ -9,6 +9,7 @@ import { SolanaForm } from './SolanaForm'
 import { NormalForm } from './NormalForm'
 import { AnimatePresence, motion } from "framer-motion"
 import axios from 'axios'
+import { BACKEND_URL } from '../types/type'
 
 export default function QuizEntry() {
   const [quizKey, setQuizKey] = useState({
@@ -26,7 +27,7 @@ export default function QuizEntry() {
       }
       setIsLoading(true)
       // Simulating API call
-      const response = await axios.post("http://localhost:8000/user/getquiz",{
+      const response = await axios.post(`https://${BACKEND_URL}/user/getquiz`,{
         key: parseInt(quizKey.key)
       })
       

@@ -19,6 +19,7 @@ import { getQuizes } from "../actions/action"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
+import { BACKEND_URL } from "../types/type"
 
 
 interface Quiz {
@@ -91,7 +92,7 @@ export default function Quizes() {
                 setIsLoading(false)
                 return
             }
-            const response = await axios.post("http://localhost:8000/admin/create", {
+            const response = await axios.post(`https://${BACKEND_URL}/admin/create`, {
                 ...createQuiz
             })
     

@@ -9,7 +9,7 @@ import { currentQuestion, currentState, leaderBoard, totalPlayers, userPosition,
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
-import { Question as questionType } from "@/app/types/type"
+import { BACKEND_URL, Question as questionType } from "@/app/types/type"
 import { AppBar } from "@/app/_components/AppBar"
 import toast from "react-hot-toast"
 
@@ -37,7 +37,7 @@ export default function Quiz({ params }: { params: { quizId: string } }) {
                 return
             }
 
-            const socket = new WebSocket("ws://localhost:8000")
+            const socket = new WebSocket(`wss://${BACKEND_URL}`)
 
             setUserWs(socket)
 

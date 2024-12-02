@@ -6,7 +6,7 @@ import { Result } from "@/app/_components/leaderBoard"
 import { Question } from "@/app/_components/Question"
 import { Waiting } from "@/app/_components/Waiting"
 import { currentQuestion, currentState, leaderBoard, roomKey, totalPlayers, ws } from "@/app/store/state"
-import { Question as questionType } from "@/app/types/type"
+import { BACKEND_URL, Question as questionType } from "@/app/types/type"
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import toast from "react-hot-toast"
@@ -27,7 +27,7 @@ export default function adminQuiz({ params }: { params: { quizId: string } }) {
         try {
             const data = JSON.parse(localStorage.getItem("admin-quiz") || "") as { adminId: string, quizId: string, quizKey: string } || null
 
-            const socket = new WebSocket("ws://localhost:8000")
+            const socket = new WebSocket(`wss://${BACKEND_URL}`)
 
             setAdminWs(socket)
 
