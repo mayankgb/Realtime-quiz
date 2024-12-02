@@ -17,7 +17,7 @@ export default function LandingPage() {
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link
             className="text-sm w-28 px-2 py-1 h-full bg-white flex items-center font-medium  rounded-md shadow-md hover:bg-slate-300"
-            href="#"
+            href="https://github.com/mayankgb/Realtime-quiz"
           >
             <div className="mr-2">
               <Image
